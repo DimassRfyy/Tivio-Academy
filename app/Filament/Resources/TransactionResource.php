@@ -15,6 +15,7 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -181,6 +182,8 @@ class TransactionResource extends Resource
                                         ->required(),
                                 
                                 Forms\Components\FileUpload::make('proof')
+                                            ->disk('public')
+                                            ->directory('proofs')
                                             ->image(),
                             ])
 
@@ -200,12 +203,12 @@ class TransactionResource extends Resource
                     ->circular(),
 
                 Tables\Columns\TextColumn::make('student.name')
-                    ->searchable(),
+                    ->searchable()
+                    ->description(fn ($record): string => $record->booking_trx_id),
 
-                Tables\Columns\TextColumn::make('booking_trx_id')
-                    ->searchable(),
-
-                Tables\Columns\TextColumn::make('grand_total_amount'),
+                Tables\Columns\TextColumn::make('grand_total_amount')
+                    ->label('Grand Total')
+                    ->formatStateUsing(fn ($state): string => 'Rp. ' . number_format($state, 0, ',', '.')),
 
                 Tables\Columns\IconColumn::make('is_paid')
                     ->boolean()
@@ -221,9 +224,13 @@ class TransactionResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('approve')
+                ActionGroup::make([
+                    ActionGroup::make([
+                        Tables\Actions\ViewAction::make(),
+                        Tables\Actions\EditAction::make(),
+                    ])
+                        ->dropdown(false),
+                    Tables\Actions\Action::make('approve')
                     ->label('Approve')
                     ->action(function (Transaction $record) {
                         $record->is_paid = true;
@@ -238,6 +245,10 @@ class TransactionResource extends Resource
                     ->color('success')
                     ->requiresConfirmation()
                     ->visible(fn (Transaction $record) => !$record->is_paid),
+                    Tables\Actions\DeleteAction::make()
+                    ->visible(fn (Transaction $record) => $record->is_paid),
+                ])
+                ->icon('heroicon-m-bars-3')
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

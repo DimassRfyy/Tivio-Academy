@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -42,14 +43,9 @@ class UserResource extends Resource
                     ->maxLength(255)
                     ->required(),    
 
-                Forms\Components\Select::make('occupation')
-                    ->options([
-                        'Developer' => 'Developer',
-                        'Designer' => 'Designer',
-                        'Marketer' => 'Marketer',
-                        'Cyber Security' => 'Cyber Security',
-                        'Project Manager' => 'Project Manager'
-                    ])
+                Forms\Components\TextInput::make('occupation')
+                    ->helperText('What do you do?')
+                    ->maxLength(20)
                     ->required(),    
 
                 Forms\Components\Select::make('roles')
@@ -72,10 +68,12 @@ class UserResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Columns\ImageColumn::make('photo'),
+                Tables\Columns\ImageColumn::make('photo')
+                    ->circular(),
 
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->description(fn ($record): string => $record->email),
 
                 Tables\Columns\TextColumn::make('roles.name'),
 
@@ -84,7 +82,15 @@ class UserResource extends Resource
                 // Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ActionGroup::make([
+                        Tables\Actions\ViewAction::make(),
+                        Tables\Actions\EditAction::make(),
+                    ])
+                        ->dropdown(false),
+                    Tables\Actions\DeleteAction::make(),
+                ])
+                ->icon('heroicon-m-bars-3')
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
