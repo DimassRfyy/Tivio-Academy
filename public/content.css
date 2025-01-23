@@ -1,0 +1,205 @@
+.content-ebook h3 {
+    font-weight: bold;
+    color: black;
+    font-size: 20px;
+}
+
+.content-ebook p,
+.content-ebook h3,
+.content-ebook img,
+.content-ebook ul,
+.content-ebook ol,
+.content-ebook pre {
+    margin-bottom: 20px;
+}
+
+.content-ebook a {
+    color: blue;
+}
+
+.content-ebook figcaption {
+    display: none;
+}
+
+.content-ebook ol {
+    list-style: number;
+    margin-left: 20px;
+}
+
+.content-ebook ul {
+    list-style: circle;
+    margin-left: 20px;
+}
+
+.content-ebook span {
+    font-size: 14px;
+}
+
+.content-ebook li {
+    padding-bottom: 14px;
+}
+
+.content-ebook p {
+    line-height: 28px;
+    font-size: 16px;
+}
+
+.theme-tokyo-night-dark code {
+    padding:20px !important;
+}
+
+.theme-tokyo-night-dark {
+    /*!
+  Theme: Tokyo-night-Dark
+  origin: https://github.com/enkia/tokyo-night-vscode-theme
+  Description: Original highlight.js style
+  Author: (c) Henri Vandersleyen <hvandersleyen@gmail.com>
+  License: see project LICENSE
+  Touched: 2022
+*/
+}
+
+.theme-tokyo-night-dark code {
+    border-radius: 16px !important;
+
+}
+.theme-tokyo-night-dark pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em
+}
+
+.theme-tokyo-night-dark code.hljs {
+    padding: 3px 5px
+}
+
+.theme-tokyo-night-dark .hljs-comment,.theme-tokyo-night-dark .hljs-meta {
+    color: #565f89
+}
+
+.theme-tokyo-night-dark .hljs-deletion,.theme-tokyo-night-dark .hljs-doctag,.theme-tokyo-night-dark .hljs-regexp,.theme-tokyo-night-dark .hljs-selector-attr,.theme-tokyo-night-dark .hljs-selector-class,.theme-tokyo-night-dark .hljs-selector-id,.theme-tokyo-night-dark .hljs-selector-pseudo,.theme-tokyo-night-dark .hljs-tag,.theme-tokyo-night-dark .hljs-template-tag,.theme-tokyo-night-dark .hljs-variable.language_ {
+    color: #f7768e
+}
+
+.theme-tokyo-night-dark .hljs-link,.theme-tokyo-night-dark .hljs-literal,.theme-tokyo-night-dark .hljs-number,.theme-tokyo-night-dark .hljs-params,.theme-tokyo-night-dark .hljs-template-variable,.theme-tokyo-night-dark .hljs-type,.theme-tokyo-night-dark .hljs-variable {
+    color: #ff9e64
+}
+
+.theme-tokyo-night-dark .hljs-attribute,.theme-tokyo-night-dark .hljs-built_in {
+    color: #e0af68
+}
+
+.theme-tokyo-night-dark .hljs-selector-tag {
+    color: #2ac3de
+}
+
+.theme-tokyo-night-dark .hljs-keyword,.theme-tokyo-night-dark .hljs-property,.theme-tokyo-night-dark .hljs-subst,.theme-tokyo-night-dark .hljs-title,.theme-tokyo-night-dark .hljs-title.class_,.theme-tokyo-night-dark .hljs-title.class_.inherited__,.theme-tokyo-night-dark .hljs-title.function_ {
+    color: #7dcfff
+}
+
+.theme-tokyo-night-dark .hljs-selector-tag {
+    color: #73daca
+}
+
+.theme-tokyo-night-dark .hljs-addition,.theme-tokyo-night-dark .hljs-bullet,.theme-tokyo-night-dark .hljs-quote,.theme-tokyo-night-dark .hljs-string,.theme-tokyo-night-dark .hljs-symbol {
+    color: #9ece6a
+}
+
+.theme-tokyo-night-dark .hljs-code,.theme-tokyo-night-dark .hljs-formula,.theme-tokyo-night-dark .hljs-section {
+    color: #7aa2f7
+}
+
+.theme-tokyo-night-dark .hljs-attr,.theme-tokyo-night-dark .hljs-char.escape_,.theme-tokyo-night-dark .hljs-keyword,.theme-tokyo-night-dark .hljs-name,.theme-tokyo-night-dark .hljs-operator {
+    color: #bb9af7
+}
+
+.theme-tokyo-night-dark .hljs-punctuation {
+    color: #c0caf5
+}
+
+.theme-tokyo-night-dark .hljs {
+    background: #1a1b26;
+    color: #9aa5ce
+}
+
+.theme-tokyo-night-dark .hljs-emphasis {
+    font-style: italic
+}
+
+.theme-tokyo-night-dark .hljs-strong {
+    font-weight: 700
+}
+
+.theme-tokyo-night-dark-min {
+    /*!
+  Theme: Tokyo-night-Dark
+  origin: https://github.com/enkia/tokyo-night-vscode-theme
+  Description: Original highlight.js style
+  Author: (c) Henri Vandersleyen <hvandersleyen@gmail.com>
+  License: see project LICENSE
+  Touched: 2022
+*/
+}
+
+.theme-tokyo-night-dark-min pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em
+}
+
+.theme-tokyo-night-dark-min code.hljs {
+    padding: 3px 5px
+}
+
+.theme-tokyo-night-dark-min .hljs-comment,.theme-tokyo-night-dark-min .hljs-meta {
+    color: #565f89
+}
+
+.theme-tokyo-night-dark-min .hljs-deletion,.theme-tokyo-night-dark-min .hljs-doctag,.theme-tokyo-night-dark-min .hljs-regexp,.theme-tokyo-night-dark-min .hljs-selector-attr,.theme-tokyo-night-dark-min .hljs-selector-class,.theme-tokyo-night-dark-min .hljs-selector-id,.theme-tokyo-night-dark-min .hljs-selector-pseudo,.theme-tokyo-night-dark-min .hljs-tag,.theme-tokyo-night-dark-min .hljs-template-tag,.theme-tokyo-night-dark-min .hljs-variable.language_ {
+    color: #f7768e
+}
+
+.theme-tokyo-night-dark-min .hljs-link,.theme-tokyo-night-dark-min .hljs-literal,.theme-tokyo-night-dark-min .hljs-number,.theme-tokyo-night-dark-min .hljs-params,.theme-tokyo-night-dark-min .hljs-template-variable,.theme-tokyo-night-dark-min .hljs-type,.theme-tokyo-night-dark-min .hljs-variable {
+    color: #ff9e64
+}
+
+.theme-tokyo-night-dark-min .hljs-attribute,.theme-tokyo-night-dark-min .hljs-built_in {
+    color: #e0af68
+}
+
+.theme-tokyo-night-dark-min .hljs-keyword,.theme-tokyo-night-dark-min .hljs-property,.theme-tokyo-night-dark-min .hljs-subst,.theme-tokyo-night-dark-min .hljs-title,.theme-tokyo-night-dark-min .hljs-title.class_,.theme-tokyo-night-dark-min .hljs-title.class_.inherited__,.theme-tokyo-night-dark-min .hljs-title.function_ {
+    color: #7dcfff
+}
+
+.theme-tokyo-night-dark-min .hljs-selector-tag {
+    color: #73daca
+}
+
+.theme-tokyo-night-dark-min .hljs-addition,.theme-tokyo-night-dark-min .hljs-bullet,.theme-tokyo-night-dark-min .hljs-quote,.theme-tokyo-night-dark-min .hljs-string,.theme-tokyo-night-dark-min .hljs-symbol {
+    color: #9ece6a
+}
+
+.theme-tokyo-night-dark-min .hljs-code,.theme-tokyo-night-dark-min .hljs-formula,.theme-tokyo-night-dark-min .hljs-section {
+    color: #7aa2f7
+}
+
+.theme-tokyo-night-dark-min .hljs-attr,.theme-tokyo-night-dark-min .hljs-char.escape_,.theme-tokyo-night-dark-min .hljs-keyword,.theme-tokyo-night-dark-min .hljs-name,.theme-tokyo-night-dark-min .hljs-operator {
+    color: #bb9af7
+}
+
+.theme-tokyo-night-dark-min .hljs-punctuation {
+    color: #c0caf5
+}
+
+.theme-tokyo-night-dark-min .hljs {
+    background: #1a1b26;
+    color: #9aa5ce
+}
+
+.theme-tokyo-night-dark-min .hljs-emphasis {
+    font-style: italic
+}
+
+.theme-tokyo-night-dark-min .hljs-strong {
+    font-weight: 700
+}
