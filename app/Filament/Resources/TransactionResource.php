@@ -107,7 +107,7 @@ class TransactionResource extends Resource
                                         $duration = $get('duration'); // get the duration from the form state
 
                                         if ($state && $duration) {
-                                            $endedAt = \Carbon\Carbon::parse($state)->addMonth($duration);
+                                            $endedAt = \Carbon\Carbon::parse($state)->addMonths($duration);
                                             $set('ended_at', $endedAt->format('Y-m-d'));
                                         }
 

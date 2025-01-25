@@ -26,7 +26,11 @@
             <div class="h-[50px] flex shrink-0 bg-obito-grey w-px"></div>
             <div id="profile-dropdown" class="relative flex items-center gap-[14px]">
                 <div class="flex shrink-0 w-[50px] h-[50px] rounded-full overflow-hidden bg-obito-grey">
-                    <img src="{{ Storage::url($user->photo) }}" class="w-full h-full object-cover" alt="photo">
+                    @if (Str::startsWith($user->photo, ['http://', 'https://']))
+                        <img src="{{ $user->photo }}" class="w-full h-full object-cover" alt="photo">
+                    @else
+                        <img src="{{ Storage::url($user->photo) }}" class="w-full h-full object-cover" alt="photo">
+                    @endif
                 </div>
                 <div>
                     <p class="font-semibold text-lg">{{ $user->name }}</p>

@@ -5,7 +5,7 @@
         <main class="relative flex flex-1 h-full">
             <section class="flex flex-1 items-center py-5 px-5 pl-[calc(((100%-1280px)/2)+75px)]">
                 <form method="POST" action="{{ route('login') }}" class="flex flex-col h-fit w-[510px] shrink-0 rounded-[20px] border border-obito-grey p-5 gap-5 bg-white">
-                @csrf
+                    @csrf
                     <h1 class="font-bold text-[22px] leading-[33px] mb-5">Welcome Back, <br>Let’s Upgrade Skills</h1>
                     <div class="flex flex-col gap-2">
                         <p>Email Address</p>
@@ -27,8 +27,17 @@
                     <button type="submit" class="flex items-center justify-center gap-[10px] rounded-full py-[14px] px-5 bg-obito-green hover:drop-shadow-effect transition-all duration-300">
                         <span class="font-semibold text-white">Sign In to My Account</span>
                     </button>
+                    
+                    <div class="flex flex-col items-center mt-5 gap-2">
+                        <p class="text-obito-text-secondary text-sm">Or sign in with</p>
+                        <a href="{{ route('google.redirect') }}" class="flex items-center justify-center gap-[10px] mt-3 w-full rounded-full border border-obito-grey py-[14px] px-5 bg-white hover:border-obito-green transition-all duration-200">
+                            <img src="assets/images/icons/icons8-google.svg" alt="Google Icon" class="w-5 h-5">
+                            <span class="font-semibold text-obito-text-primary">Sign In with Google</span>
+                        </a>
+                    </div>
                 </form>
             </section>
+            
             <div class="relative flex w-1/2 shrink-0">
                 <div id="background-banner" class="absolute flex w-full h-full overflow-hidden">
                     <img src="assets/images/backgrounds/banner-subscription.png" class="w-full h-full object-cover" alt="banner">
