@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="buttons grid grid-cols-2 gap-[12px]">
-      <a href="#" class="border border-obito-grey rounded-full py-[10px] flex justify-center items-center hover:border-obito-green transition-all duration-300">
+      <a href="{{ route('dashboard.course.learning.testimonial', $course->slug) }}" class="border border-obito-grey rounded-full py-[10px] flex justify-center items-center hover:border-obito-green transition-all duration-300">
         <span class="font-semibold">Get My Certificate</span>
       </a>
       <a href="{{ route('dashboard') }}" class="text-white rounded-full py-[10px] flex justify-center items-center bg-obito-green hover:drop-shadow-effect transition-all duration-300">

@@ -205,6 +205,11 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('student.name')
                     ->searchable()
                     ->description(fn ($record): string => $record->booking_trx_id),
+            
+                Tables\Columns\TextColumn::make('student.email')
+                    ->label('Email')
+                    ->icon('heroicon-m-envelope')
+                    ->iconColor('primary'),
 
                 Tables\Columns\TextColumn::make('grand_total_amount')
                     ->label('Grand Total')

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Course;
+use App\Models\CourseTestimonial;
 use Illuminate\Support\Collection;
 
 class CourseRepository implements CourseRepositoryInterface
@@ -18,4 +19,9 @@ class CourseRepository implements CourseRepositoryInterface
   {
     return Course::with('category')->latest()->get();
   }
+
+  public function createTestimonial(array $data): CourseTestimonial
+    {
+        return CourseTestimonial::create($data);
+    }
 }

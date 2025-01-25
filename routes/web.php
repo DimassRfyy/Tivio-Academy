@@ -32,7 +32,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/dashboard/join/{course:slug}', [CourseController::class, 'join'])->name('dashboard.course.join');
             Route::get('/dashboard/learning/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'learning'])->name('dashboard.course.learning');
             Route::get('/dashboard/learning/{course:slug}/finished', [CourseController::class, 'learning_finished'])->name('dashboard.course.learning.finished');
-
+            Route::get('/dashboard/learning/{course:slug}/testimonial', [CourseController::class, 'testimonial'])->name('dashboard.course.learning.testimonial');
+            Route::post('/dashboard/learning/{course:slug}/testimonial/store', [CourseController::class, 'testimonial_store'])->name('dashboard.course.learning.testimonial.store');
+            Route::get('/dashboard/learning/{course:slug}/certificate', [CourseController::class, 'certificate'])->name('dashboard.course.learning.certificate');
         });
 
         Route::get('/checkout/success', [FrontController::class, 'checkout_success'])->name('front.checkout.success');

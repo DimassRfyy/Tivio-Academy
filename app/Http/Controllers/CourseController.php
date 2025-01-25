@@ -42,6 +42,7 @@ class CourseController extends Controller
         $course->load([
             'category', 
             'benefits',
+            'courseTestimonials.user',
             'courseSections.sectionContents',
             'courseMentors.mentor'
         ]);
@@ -68,6 +69,28 @@ class CourseController extends Controller
     public function learning_finished(Course $course)
     {
         return view('courses.learning_finished', compact('course'));
+    }
+
+    public function testimonial(Course $course)
+    {
+        return view('courses.testimonial', compact('course'));
+    }
+
+    public function testimonial_store(Request $request, Course $course)
+    {
+    $request->validate([
+        'rating' => 'required|integer|min:1|max:5',
+        'message' => 'required|string',
+    ]);
+
+    $this->courseService->storeTestimonial($request->all(), $course);
+
+    return redirect()->route('dashboard.course.learning.certificate', $course->slug);
+    }
+
+    public function certificate(Course $course)
+    {
+        return view('courses.certificate', compact('course'));
     }
 
     public function search_courses(Request $request)

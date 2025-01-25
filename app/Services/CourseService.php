@@ -96,4 +96,13 @@ class CourseService
       return $course->category->name ?? 'Uncategorized';
     });
   }
+
+  public function storeTestimonial(array $data, Course $course)
+    {
+      $user = Auth::user();
+      
+      $data['course_id'] = $course->id;
+      $data['user_id'] = $user->id;
+      return $this->courseRepository->createTestimonial($data);
+    }
 }
