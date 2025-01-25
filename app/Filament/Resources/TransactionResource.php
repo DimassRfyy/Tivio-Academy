@@ -124,7 +124,11 @@ class TransactionResource extends Resource
                         Forms\Components\Wizard\Step::make('Customer Information')
                         ->schema([
                             Forms\Components\Select::make('user_id')
-                                ->relationship('student', 'email')
+                                ->relationship('student', 'email', function ($query) {
+                                    $query->whereHas('roles', function ($query) {
+                                        $query->where('name', 'student');
+                                    });
+                                })
                                 ->searchable()
                                 ->preload()
                                 ->required()
