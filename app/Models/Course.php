@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Course extends Model
@@ -59,7 +60,6 @@ class Course extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-
     public function getContentCountAttribute()
     {
         return $this->courseSections->sum(function ($section) {
@@ -67,4 +67,20 @@ class Course extends Model
         });
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($course) {
+            if ($course->thumbnail) {
+                Storage::delete($course->thumbnail);
+            }
+        });
+
+        static::updating(function ($course) {
+            if ($course->isDirty('thumbnail')) {
+                Storage::delete($course->getOriginal('thumbnail'));
+            }
+        });
+    }
 }

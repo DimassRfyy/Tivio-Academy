@@ -9,6 +9,7 @@ use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser
@@ -76,5 +77,21 @@ class User extends Authenticatable implements FilamentUser
             ->where('is_paid', true)
             ->where('ended_at', '>=', now())
             ->exists(); // return boolean
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            if ($user->photo) {
+                Storage::delete($user->photo);
+            }
+        });
+
+        static::updating(function ($user) {
+            if ($user->isDirty('photo')) {
+                Storage::delete($user->getOriginal('photo'));
+            }
+        });
     }
 }
