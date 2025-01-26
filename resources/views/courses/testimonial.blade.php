@@ -46,11 +46,10 @@
                 @csrf
                 <div>
                     <label for="rating" class="block text-sm font-medium text-gray-700">Your Rating</label>
-                    <div class="flex space-x-2 mt-2">
+                    <div id="rating" class="flex space-x-2 mt-2">
                         @for ($i = 1; $i <= 5; $i++)
                             <input type="radio" id="rating-{{ $i }}" name="rating" value="{{ $i }}" class="hidden peer">
-                            <label for="rating-{{ $i }}"
-                                class="cursor-pointer text-gray-400 peer-checked:text-[#2f6a62] hover:text-[#2f6a62]">
+                            <label for="rating-{{ $i }}" class="cursor-pointer text-gray-400 hover:text-[#2f6a62]">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
                                     class="w-6 h-6">
                                     <path
@@ -77,6 +76,20 @@
 
         </div>
     </div>
+    <script>
+        const ratingDiv = document.getElementById('rating');
+        const radios = ratingDiv.querySelectorAll('input[type="radio"]');
+        const labels = ratingDiv.querySelectorAll('label');
+
+        radios.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                labels.forEach((label, i) => {
+                    // Change color for all labels up to the selected one
+                    label.style.color = i <= index ? '#2f6a62' : 'gray';
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

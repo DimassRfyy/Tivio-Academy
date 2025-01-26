@@ -44,7 +44,8 @@ class CourseController extends Controller
             'benefits',
             'courseTestimonials.user',
             'courseSections.sectionContents',
-            'courseMentors.mentor'
+            'courseMentors.mentor',
+            'tools',
         ]);
         return view('courses.details', compact('course'));
     } 

@@ -123,10 +123,10 @@
             <span class="font-semibold group-[.active]:text-white">Testimonials</span>
           </p>
         </button>
-        <button type="button" class="tab-btn group" data-target="example">
+        <button type="button" class="tab-btn group" data-target="tools">
           <p
             class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-            <span class="font-semibold group-[.active]:text-white">Portfolios</span>
+            <span class="font-semibold group-[.active]:text-white">Tools</span>
           </p>
         </button>
         <button type="button" class="tab-btn group" data-target="example">
@@ -210,13 +210,12 @@
         <p class="font-semibold">{{$content->name}}</p>
         </div>
       @endforeach
-
           </div>
         </div>
         </div>
       @endforeach
-
         </div>
+
         <div id="testimonials-content" class="tab-content grid grid-cols-2 w-full max-w-[860px] gap-5 hidden">
           @foreach ($course->courseTestimonials as $testimonial)
         <div class="testimonial-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
@@ -232,7 +231,11 @@
         <p class="leading-7">{{ $testimonial->message }}</p>
         <div class="flex items-center gap-3">
           <div class="flex w-[50px] h-[50px] shrink-0 rounded-full overflow-hidden">
-          <img src="{{ Storage::url($testimonial->user->photo) }}" class="w-full h-full object-cover" alt="photo">
+          @if (Str::startsWith($testimonial->user->photo, ['http://', 'https://']))
+        <img src="{{ $testimonial->user->photo }}" class="w-full h-full object-cover" alt="photo">
+      @else
+      <img src="{{ Storage::url($testimonial->user->photo) }}" class="w-full h-full object-cover" alt="photo">
+    @endif
           </div>
           <div>
           <p class="font-semibold">{{ $testimonial->user->name }}</p>
@@ -242,9 +245,25 @@
         </div>
       @endforeach
         </div>
-        <div id="example" class="tab-content hidden">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, sapiente?</p>
+
+        <div id="tools" class="tab-content grid grid-cols-4 w-full max-w-[860px] gap-5 hidden">
+          @foreach($course->tools as $tool)
+        <a target="_blank" href="{{ $tool->link }}"
+        class="tool-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white hover:border-obito-green transition-all duration-300">
+        <div class="flex w-full h-[150px] rounded-lg overflow-hidden">
+          <img src="{{ Storage::url($tool->photo) }}" class="w-full h-full object-cover" alt="{{ $tool->name }}">
         </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-semibold text-lg">{{ $tool->name }}</p>
+          <span class="text-sm px-3 py-1 rounded-full inline-block 
+      {{ $tool->is_free ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
+          {{ $tool->is_free ? 'Gratis' : 'Berbayar' }}
+          </span>
+        </div>
+        </a>
+      @endforeach
+        </div>
+
       </div>
     </div>
   </section>

@@ -76,8 +76,17 @@ class CourseResource extends Resource
                         
 
                 ]),
-            ]);
-    }
+                Fieldset::make('Tools')
+                ->schema([
+                    Forms\Components\Select::make('tools')
+                    ->multiple()
+                    ->searchable()
+                    ->preload()
+                    ->relationship('tools', 'name')
+                    ->required(),
+                ]),
+                ]);
+        }
 
     public static function table(Table $table): Table
     {
