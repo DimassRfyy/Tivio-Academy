@@ -23,7 +23,9 @@ class Course extends Model
         'thumbnail',
         'about',
         'is_popular',
-        'category_id'
+        'category_id',
+        'whatsapp_group',
+        'discord_server',
     ];
 
     public function setNameAttribute($value) {

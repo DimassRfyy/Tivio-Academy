@@ -85,6 +85,19 @@ class CourseResource extends Resource
                     ->relationship('tools', 'name')
                     ->required(),
                 ]),
+                Fieldset::make('Private Groups')
+                ->schema([
+                    Forms\Components\TextInput::make('whatsapp_group')
+                    ->url()
+                    ->suffixIcon('heroicon-m-link')
+                    ->placeholder('Whatsapp Group Link')
+                    ->nullable(),
+                    Forms\Components\TextInput::make('discord_server')
+                    ->url()
+                    ->suffixIcon('heroicon-m-link')
+                    ->placeholder('Discord Server Link')
+                    ->nullable(),
+                ]),
                 ]);
         }
 

@@ -60,9 +60,8 @@
       <article>
         <div class="content-ebook">
           <h1 class="mb-5">{{ $currentContent->name }}</h1>
-          
           {!! $currentContent->content !!}
-        </div>         
+      </div>          
       </article>
     </main>
     <nav class="fixed bottom-0 left-auto right-0 z-30 mx-auto w-[calc(100%-260px)] pt-5 pb-[30px] bg-[#F8FAF9]">

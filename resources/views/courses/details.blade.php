@@ -129,10 +129,10 @@
             <span class="font-semibold group-[.active]:text-white">Tools</span>
           </p>
         </button>
-        <button type="button" class="tab-btn group" data-target="example">
+        <button type="button" class="tab-btn group" data-target="community">
           <p
             class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-            <span class="font-semibold group-[.active]:text-white">Rewards</span>
+            <span class="font-semibold group-[.active]:text-white">Private Group</span>
           </p>
         </button>
       </div>
@@ -248,22 +248,57 @@
 
         <div id="tools" class="tab-content grid grid-cols-4 w-full max-w-[860px] gap-5 hidden">
           @foreach($course->tools as $tool)
-        <a target="_blank" href="{{ $tool->link }}"
-        class="tool-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white hover:border-obito-green transition-all duration-300">
-        <div class="flex w-full h-[150px] rounded-lg overflow-hidden">
-          <img src="{{ Storage::url($tool->photo) }}" class="w-full h-full object-cover" alt="{{ $tool->name }}">
-        </div>
-        <div class="flex flex-col gap-2">
-          <p class="font-semibold text-lg">{{ $tool->name }}</p>
-          <span class="text-sm px-3 py-1 rounded-full inline-block 
-      {{ $tool->is_free ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
-          {{ $tool->is_free ? 'Gratis' : 'Berbayar' }}
-          </span>
-        </div>
-        </a>
+          <a target="_blank" href="{{ $tool->link }}"
+          class="tool-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white hover:border-obito-green transition-all duration-300">
+          <div class="flex w-full h-[150px] rounded-lg overflow-hidden">
+            <img src="{{ Storage::url($tool->photo) }}" class="w-full h-full object-cover" alt="{{ $tool->name }}">
+          </div>
+          <div class="flex flex-col gap-2">
+            <p class="font-semibold text-lg">{{ $tool->name }}</p>
+            <span class="text-sm px-3 py-1 rounded-full inline-block 
+        {{ $tool->is_free ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
+            {{ $tool->is_free ? 'Gratis' : 'Berbayar' }}
+            </span>
+          </div>
+          </a>
       @endforeach
         </div>
 
+        <div id="community" class="tab-content grid grid-cols-4 gap-5 hidden">
+          @if (Auth::user()->hasActiveSubscription())
+        <a target="_blank" href="{{ $course->whatsapp_group }}"
+        class="tool-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white hover:border-obito-green transition-all duration-300">
+        <div class="flex justify-center items-center w-[80px] h-[80px] rounded-full overflow-hidden bg-[#D9D9D9]">
+          <img
+          src="https://img.freepik.com/premium-psd/whatsapp-3d-icon-with-matte-finish-transparent-background_572221-26.jpg?semt=ais_hybrid"
+          class="w-full h-full object-cover" alt="WhatsApp Group">
+        </div>
+        <div class="flex flex-col gap-2 text-center">
+          <p class="font-semibold text-lg">WhatsApp Group</p>
+          <span class="text-sm px-3 py-1 rounded-full inline-block bg-green-100 text-green-700">Aktif</span>
+          <button
+          class="mt-3 w-full py-[10px] px-5 text-white bg-obito-green hover:drop-shadow-effect transition-all duration-300 font-semibold p-4 rounded-full">Join</button>
+        </div>
+        </a>
+
+        <a target="_blank" href="{{ $course->discord_server }}"
+        class="tool-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white hover:border-obito-green transition-all duration-300">
+        <div class="flex justify-center items-center w-[80px] h-[80px] rounded-full overflow-hidden bg-[#D9D9D9]">
+          <img src="https://assets.mofoprod.net/network/images/discord.original.jpg"
+          class="w-full h-full object-cover" alt="Telegram Group">
+        </div>
+        <div class="flex flex-col gap-2 text-center">
+          <p class="font-semibold text-lg">Discord Server</p>
+          <span class="text-sm px-3 py-1 rounded-full inline-block bg-green-100 text-green-700">Aktif</span>
+          <button
+          class="mt-3 w-full py-[10px] px-5 text-white bg-obito-green hover:drop-shadow-effect transition-all duration-300 font-semibold p-4 rounded-full">Join</button>
+        </div>
+        </a>
+      @else
+      please subscribe to join the community
+    </div>
+
+  @endif
       </div>
     </div>
   </section>

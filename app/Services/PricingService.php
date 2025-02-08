@@ -18,4 +18,9 @@ class PricingService
   {
     return $this->pricingRepository->getAll();
   }
+
+  public function getTestimonials()
+  {
+    return $this->pricingRepository->getAllTestimonials();
+  }
 }
